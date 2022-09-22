@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
     });
     const posts = postData.map((post) => post.get({ plain: true }));
 console.log(posts);
-    res.render('allPosts', {
+    res.render('all-posts', {
       // specifies a different layout.
       layout: 'dashboard',
       posts,

@@ -1,19 +1,19 @@
 const { User }= require('../models');
 [
   {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
-    "password": "password12345"
+    "name": "Mandy",
+    "email": "mandy@gmail.com",
+    "password": "password92022"
   },
   {
-    "name": "Lernantino",
-    "email": "lernantino@gmail.com",
-    "password": "password12345"
+    "name": "Superman",
+    "email": "super@gmail.com",
+    "password": "password92022"
   },
   {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
-    "password": "password12345"
+    "name": "Sweet",
+    "email": "sweet@yahoo.com",
+    "password": "password92022"
   }
 ];
 

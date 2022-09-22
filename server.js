@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const handlebars = require('express-handlebars');
+const exphbs = require("express-handlebars");
 const session = require('express-session');
 const routes = require('./controllers/homeRoutes');
 const helpers = require('./utils/helpers');
@@ -22,6 +22,11 @@ const sess = {
 };
 
 app.use(session(sess));
+
+const hbs = exphbs.create({ helpers });
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

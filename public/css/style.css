@@ -10,15 +10,15 @@
   * {
     box-sizing: border-box;
   }
-  
+  /* var(--primary); var(--dark) */
   body {
-    background-color: var(--primary);
+    background-color: beige;
     margin: 0;
     padding: 0;
-    font-family: "IBM Plex Sans", sans-serif;
-    color: var(--dark);
+    font-family: sans-serif;
+    color: black;
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 15px;
   }
   
   h1,
@@ -48,10 +48,6 @@
   main {
     margin: 20px auto;
     width: 94%;
-  }
-  
-  a {
-    text-decoration: none;
   }
   
   p {

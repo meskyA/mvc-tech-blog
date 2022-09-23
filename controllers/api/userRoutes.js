@@ -23,10 +23,11 @@ router.post('/', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
+  console.log(req.body);
   try {
     const userData = await User.findOne({ where: { username: req.body.username } })
     .then(userData =>{
-
+      console.log('userData ', userData);
     if (!userData) {
       res
         .status(400)
@@ -45,25 +46,34 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.username = user.id;
-      req.session.logged_in = true;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });
+    console.log('req.session ', req.session);
   });
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 // Logout
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  console.log(" logout route hit");
+  console.log(req.session.loggedIn);
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
+     
     });
   } else {
+    console.log("in else path");
     res.status(404).end();
+    
   }
+
 });
+
 
 module.exports = router;

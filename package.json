@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "seed": "^0.4.4"
+    "seed": "node seeds/seed.js"
   },
   "name": "mvc-tech-blog-",
   "description": "",

@@ -21,13 +21,13 @@ router.post('/', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res) => {
   try {
     console.log('req.body', req.body);
-    const [updatedRows] = await Post.update(req.body, {
+    const [updatedPost] = await Post.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
 
-    if (updatededRows > 0) {
+    if (updatedPost > 0) {
       res.status(200).end();
     } else {
       res.status(404).end();
@@ -41,13 +41,13 @@ router.put('/:id', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const [updatedRows] = Post.destroy({
+    const [updatedPost] = Post.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (updatedRows > 0) {
+    if (updatedPost > 0) {
       res.status(200).end();
     } else {
       res.status(404).end();

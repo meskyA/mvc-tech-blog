@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
     
     console.log(comments);
 
-    res.render('post', {
+    res.render('comments', {
       comments,
       logged_in: req.session.logged_in,
     });

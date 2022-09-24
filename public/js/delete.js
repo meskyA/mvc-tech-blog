@@ -4,7 +4,7 @@ console.log("testing");
 console.log(postId)
 
     const deleteClickHandler = async () => {
-        await fetch(`/api/post/${postId}`, {
+        await fetch(`/api/posts/${postId}`, {
           method: 'DELETE'
         });
       

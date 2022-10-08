@@ -23,7 +23,7 @@ console.log(posts);
 });
 
 // New post
-router.get('/new', withAuth, (req, res) => {
+router.post('/new', withAuth, (req, res) => {
   res.render('newPost', {
     layout: 'dashboard',
   });

@@ -30,7 +30,7 @@ router.post('/new', withAuth, (req, res) => {
 });
 
 // Edit a post
-router.get('/edit/:id', withAuth, async (req, res) => {
+router.put('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
 

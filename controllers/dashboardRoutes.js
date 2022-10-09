@@ -1,26 +1,23 @@
 const router = require('express').Router();
-const { Post, User } = require('../models/');
+const { Post, User, Comment } = require('../models/');
 const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');
 
 // Posts dashboard
 router.get('/', withAuth, (req, res) => {
-//   try {
-  
-//     const postData = await 
 Post.findAll({
-      where:{userId: req.session.userId,
-      include: [User]
-    },
+      where: { userId: req.session.userId,
+           },   
+      
     attributes: [
       'id',
       'postContent',
       'PostTitle',
-      'dateCreated',
+      'dateCreated'
     ],
     include: [
       {
-        model: Post,
+        model: Comment,
         attributes: ['id', 'comment_content', 'postId:', 'userId', 'dateCreated:'],
         include: {
           model: User,
@@ -35,11 +32,9 @@ Post.findAll({
   })
 .then(dbPostData => {
   const posts = dbPostData.map((post) => post.get({ plain: true }));
-  console.log(posts);
-      res.render('dashboard', {
-        // specifies a different layout.
-        posts, loggedIn: true });
-       
+  res.render('dashboard', {
+    posts, loggedIn: true });
+           
 })
   
  .catch (err => {
@@ -48,32 +43,47 @@ Post.findAll({
   });
 });
 
-// New post
-// router.post('/new', withAuth, (req, res) => {
-//   res.render('newPost', {
-//     layout: 'dashboard',
-//   });
-// });
-
 // Edit a post
-router.put('/edit/:id', withAuth, async (req, res) => {
-  try {
-    const postData = await Post.findByPk(req.params.id);
-
-    if (postData) {
-      // serializing the data
-      const post = postData.get({ plain: true });
-      console.log(post);
-      res.render('editPost', {
-        layout: 'dashboard',
-        post,
-      });
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.redirect('login');
-  }
+router.get('/edit/:id', withAuth, async (req, res) => {
+    Post.findOne ({
+      where: {
+        id: req.params.id
+      },
+      attributes: ['id',
+                'postTitle',
+                'postContent',
+                'dateCreated'
+            ],
+            include: [{
+                    model: User,
+                    attributes: ['username']
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_content', 'postId', 'userId', 'dateCreated'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                }
+            ]
+        })
+    .then(dbpostData => {
+      if (!dbpostData) {
+        res.status(404).json({ message: 'No post with this id found.'});
+        return;
+      }
+      const post = dbPostData.get({ plain: true });
+      res.render('editPost', { post, loggedIn: true });
+    })
+ .catch (err => {
+   console.log(err);
+    res.status(500).json(err);
 });
+})
+router.get('/new', (req, res) => {
+  res.render('newpost');
+});
+
 
 module.exports = router;

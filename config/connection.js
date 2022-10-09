@@ -19,3 +19,5 @@ if (process.env.JAWSDB_URL) {
 }
 
 module.exports = sequelize;
+
+// JAWSDB_URL='mysql://w3vyj02vkwwyrd36:tpiqm67yoesoct1n@qvti2nukhfiig51b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/kzfd7oiewh9dlsl3'

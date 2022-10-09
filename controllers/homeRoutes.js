@@ -35,7 +35,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
       // serialize the data
       const post = postData.get({ plain: true });
       console.log(post);
-      res.render('singlePost', { post, loggedIn: req.session.loggedIn});
+      res.render('singlePost', { post, loggedIn: req.body.loggedIn});
     } else {
       res.status(404).end();
     }
@@ -46,7 +46,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
 
 // sign-up and login options on dashboard
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.body.loggedIn) {
     res.redirect('/dashboard');
     return;
   }
@@ -54,7 +54,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.body.loggedIn) {
     res.redirect('/dashboard');
     return;
   }

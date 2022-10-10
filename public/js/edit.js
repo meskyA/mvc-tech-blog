@@ -2,9 +2,11 @@ async function editFormHandler(event) {
   event.preventDefault();
 
   const postTitle = document.querySelector('input[name="post-title"]').value.trim();
-  const postContent = document.querySelector('input[name="content"]').value.trim();
+  // const postContent = document.querySelector('input[name="content"]').value.trim();
+  const postContent = document.querySelector('textarea[name="post-text"]').value.trim();
+  postContent,
   console.log(postTitle);
-  console.log(postContent);
+  // console.log(postContent);
 
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
@@ -15,7 +17,7 @@ async function editFormHandler(event) {
       body: JSON.stringify({
         postId: id,
         postTitle,
-        postContent
+        // postContent
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -30,4 +32,6 @@ async function editFormHandler(event) {
 
 }
 
-document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+document
+.querySelector('.edit-post-form')
+.addEventListener('submit', editFormHandler);

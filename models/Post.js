@@ -13,12 +13,12 @@ class Post extends Model {}
     },
     postTitle: {
       type: DataTypes.STRING(25),
-      allowNull: false,
+      // allowNull: false,
       unique: true,
     },
     postContent: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       unique: true,
     },
     dateCreated: {

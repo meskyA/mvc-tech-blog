@@ -59,11 +59,11 @@ router.post('/', (req, res) => {
     })
     .then(dbUserData => {
       req.session.save(() => {
-        req.session.userId = newUser.id;
-        req.session.username = newUser.username;
+        req.session.userId = dbUserData.id;
+        req.session.username = dbUserData.username;
         req.session.loggedIn = true;
   
-        res.json(newUser);
+        res.json(dbUserData);
 
     });
    

@@ -9,26 +9,26 @@ Post.findAll({
       where: { userId: req.session.userId,
            },   
       
-    attributes: [
-      'id',
-      'postContent',
-      'PostTitle',
-      'dateCreated'
-    ],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_content', 'postId:', 'userId', 'dateCreated:'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
+  //   attributes: [
+  //     'id',
+  //     'postContent',
+  //     'PostTitle',
+  //     'dateCreated'
+  //   ],
+  //   include: [
+  //     {
+  //       model: Comment,
+  //       attributes: ['id', 'comment_content', 'postId:', 'userId', 'dateCreated:'],
+  //       include: {
+  //         model: User,
+  //         attributes: ['username']
+  //       }
+  //     },
+  //     {
+  //       model: User,
+  //       attributes: ['username']
+  //     }
+  //   ]
   })
 .then(dbPostData => {
   const posts = dbPostData.map((post) => post.get({ plain: true }));

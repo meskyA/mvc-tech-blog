@@ -6,7 +6,8 @@ async function newFormHandler(event) {
   
     const postTitle = document.querySelector('input[name="post-title"]').value;
     // const postContent = document.querySelector('textarea[name="post-body"]').value;
-  
+    const postContent = document.querySelector('textarea[name="post-text"]').value;
+    postContent,
     console.log(postTitle);
     // console.log(postContent);
   

@@ -1,35 +1,33 @@
-const postId = document.querySelector('input[name="post-id"]').value;
-console.log("testing");
-console.log(postId);
+async function editFormHandler(event) {
+  event.preventDefault();
 
-const editFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const postTitle = document.querySelector('input[name="post-title"]').value;
-    const postContent = document.querySelector('textarea[name="post-body"]').value;
-  
-    console.log(postTitle);
-    console.log(postContent);
-  
-    const response = await fetch(`/api/posts/${postId}`, {
+  const postTitle = document.querySelector('input[name="post-title"]').value.trim();
+  const postContent = document.querySelector('input[name="content"]').value.trim();
+  console.log(postTitle);
+  console.log(postContent);
+
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+    
+    const response = await fetch(`/api/posts/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
+        postId: id,
         postTitle,
-        postContent,
+        postContent
       }),
       headers: {
         'Content-Type': 'application/json'
       }
     });
-  
-    console.log(response);
+    
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/dashboard/');
     } else {
-      alert('Failed to update post');
+      alert(response.statusText);
     }
-    document.location.replace('/dashboard');
-  };
-  document
-  .querySelector('#edit-post-form')
-  .addEventListener('submit', editFormHandler);
+
+}
+
+document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);

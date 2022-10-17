@@ -85,7 +85,7 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect user name or password, please try again' });
+        .json({ message: 'Wrong user name or password, please try again' });
       return;
     }
 
@@ -94,7 +94,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect user name or password, please try again' });
+        .json({ message: 'Wrong user name or password, please try again' });
       return;
     }
 
@@ -105,24 +105,24 @@ router.post('/login', async (req, res) => {
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });
-    console.log('req.session ', req.session);
+    // console.log('req.session ', req.session);
   });
   } catch (err) {
     console.log(err);
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 // Logout
 router.post('/logout', (req, res) => {
-  console.log(" logout route hit");
-  console.log(req.session.loggedIn);
+  // console.log(" logout route hit");
+  // console.log(req.session.loggedIn);
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
      
     });
   } else {
-    console.log("in else path");
+    // console.log("in else path");
     res.status(404).end();   
   }
 });

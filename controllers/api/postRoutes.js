@@ -6,28 +6,28 @@ const sequelize = require("../../config/connection");
 router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
-    attributes: ["id", "postTitle", "postContent", "dateCreated"],
-    order: [[" dateCreated", "DESC"]],
-    include: [
-      {
-        model: User,
-        attributes: ["username"],
-      },
-      {
-        model: Comment,
-        attributes: [
-          "id",
-          " comment_content",
-          "postId",
-          "userId",
-          "dateCreated",
-        ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
-    ],
+    // attributes: ["id", "postTitle", "postContent", "dateCreated"],
+    // order: [[" dateCreated", "DESC"]],
+    // include: [
+    //   {
+    //     model: User,
+    //     attributes: ["username"],
+    //   },
+    //   {
+    //     model: Comment,
+    //     attributes: [
+    //       "id",
+    //       " comment_content",
+    //       "postId",
+    //       "userId",
+    //       "dateCreated",
+    //     ],
+    //     include: {
+    //       model: User,
+    //       attributes: ["username"],
+    //     },
+    //   },
+    // ],
   })
     .then((dbPostData) => res.json(dbPostData.reverse()))
     .catch((err) => {
@@ -35,32 +35,12 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
+// API for single post
 router.get("/:id", (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "postContent", "postTitle", "dateCreated"],
-    include: [
-      {
-        model: User,
-        attributes: ["username"],
-      },
-      {
-        model: Comment,
-        attributes: [
-          "id",
-          "comment_content",
-          "postId",
-          "userId",
-          "dateCreated",
-        ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
-    ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {

@@ -5,10 +5,20 @@
             <label for="post-title">Title</label>
             <input type="text" id="post-title" name="post-title"/>
         </div>
-        <div>
-            <label for="post-text">Text</label>
-            <textarea id="post-text" name="post-text"></textarea>
-        </div>
+        
+  <div>
+       <form class="comment-form"></form>
+        <label for="post-comment">Add Comment</label>
+     <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    
+  </div>
+</form>
+
+
+{{> comments post.comments}}
         <button type="submit" class="btn">Create</button>
     </form>
 </section>

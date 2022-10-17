@@ -181,7 +181,7 @@
   .card-body {
     padding: 1%;
   }
-  /* var(--dark) */
+ 
   .card-body2 {
     padding: 3%;
     color: var(--primary);

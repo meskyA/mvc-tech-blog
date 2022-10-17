@@ -11,7 +11,7 @@ const postdata =
   },
   {
     "postTitle": "Fruits",
-    "postContent": "Seasonal fruits are cheper now.",
+    "postContent": "Seasonal fruits are cheaper now.",
     "userId": 2
   },
   {

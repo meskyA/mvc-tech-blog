@@ -30,7 +30,7 @@ async function commentFormHandler(event) {
 }
 
 document
-.querySelector('.comment-form')
+.querySelector('#edit-post-form')
 .addEventListener('submit', commentFormHandler);
 
 

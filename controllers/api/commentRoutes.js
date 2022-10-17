@@ -3,11 +3,9 @@ const { Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
-  Comment.findAll({})
-    .then((dbCommentData) => res.json(dbCommentData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+  Comment.findAll().then((dbCommentData) => {
+    res.json(dbCommentData);
+
     });
 });
 
@@ -51,18 +49,16 @@ router.put("/:id", withAuth, (req, res) => {
       },
     }
   )
-    .then((dbCommentData) => {
-      if (!dbCommentData) {
-        res.status(404).json({ message: "No comment with this id was found" });
-        return;
-      }
-      res.json(dbCommentData);
+    .then((updateComment) => {
+      // if (!updaComment) {
+      //   res.status(404).json({ message: "No comment with this id was found" });
+      //   return;
+      // }
+      res.json(updateComment);
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+    .catch((err) => res.json(err));
     });
-});
+
 
 router.delete("/:id", withAuth, (req, res) => {
   Comment.destroy({
@@ -70,16 +66,14 @@ router.delete("/:id", withAuth, (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbCommentData) => {
-      if (!dbCommentData) {
-        res.status(404).json({ message: "No comment with this id was found" });
-        return;
-      }
-      res.json(dbCommentData);
+    .then((deleteComment) => {
+      // if (!dbCommentData) {
+      //   res.status(404).json({ message: "No comment with this id was found" });
+      //   return;
+      // }
+      res.json(deleteComment);
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+    .catch((err) => res.json(err));
+  });
+
 module.exports = router;

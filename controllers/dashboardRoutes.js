@@ -8,66 +8,26 @@ router.get('/', withAuth, (req, res) => {
 Post.findAll({
       where: { userId: req.session.userId,
            },   
-      
-  //   attributes: [
-  //     'id',
-  //     'postContent',
-  //     'PostTitle',
-  //     'dateCreated'
-  //   ],
-  //   include: [
-  //     {
-  //       model: Comment,
-  //       attributes: ['id', 'comment_content', 'postId:', 'userId', 'dateCreated:'],
-  //       include: {
-  //         model: User,
-  //         attributes: ['username']
-  //       }
-  //     },
-  //     {
-  //       model: User,
-  //       attributes: ['username']
-  //     }
-  //   ]
   })
 .then(dbPostData => {
   const posts = dbPostData.map((post) => post.get({ plain: true }));
   res.render('dashboard', {
     posts, loggedIn: true });
            
-})
-  
+})  
  .catch (err => {
    console.log(err);
     res.status(500).json(err);
   });
 });
 
-// Edit a post
+// Edit a post route
 router.get('/edit/:id', withAuth, async (req, res) => {
     Post.findOne ({
       where: {
         id: req.params.id
       },
-      attributes: ['id',
-                'postTitle',
-                'postContent',
-                'dateCreated'
-            ],
-            include: [{
-                    model: User,
-                    attributes: ['username']
-                },
-                {
-                    model: Comment,
-                    attributes: ['id', 'comment_content', 'postId', 'userId', 'dateCreated'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                }
-            ]
-        })
+    })
     .then(dbpostData => {
       if (!dbpostData) {
         res.status(404).json({ message: 'No post with this id found.'});

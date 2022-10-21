@@ -1,31 +1,27 @@
-// const { response } = require("express");
-
-// const newFormHandler = 
 async function newFormHandler(event) {
-    event.preventDefault();
-  
-    const postTitle = document.querySelector('input[name="post-title"]').value;
-    // const postContent = document.querySelector('textarea[name="post-body"]').value;
-    const postContent = document.querySelector('textarea[name="comment-body"]').value;
-    postContent,
-    console.log(postTitle);
-    // console.log(postContent);
-  
-    const response = await fetch(`/api/posts`, {
-      method: 'POST',
-      body: JSON.stringify({
-        postTitle,
-        postContent,
-      }),
-      headers: { 'Content-Type': 'application/json' 
+  event.preventDefault();
+
+  const postTitle = document.querySelector('input[name="post-title"]').value;
+  const postContent = document.querySelector('input[name="content"]').value;
+
+  const response = await fetch(`/api/posts`, {
+    method: 'POST',
+    body: JSON.stringify({
+      postTitle,
+      postContent,
+    }),
+    headers: {
+      'Content-Type': 'application/json'
     }
   });
   if (response.ok) {
-    document,location.replace('/dashboard');
-  }else {
+    document, location.replace('/dashboard');
+  } else {
     alert(response.statusMessage);
   }
 }
-  document
-    .querySelector('#new-post-form')
-    .addEventListener('submit', newFormHandler);
+
+
+document
+  .querySelector('#new-post-form')
+  .addEventListener('submit', newFormHandler);

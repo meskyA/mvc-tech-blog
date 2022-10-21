@@ -1,35 +1,3 @@
-// async function editFormHandler(event) {
-//   event.preventDefault();
-
-//   const postTitle = document.querySelector('input[name="post-title"]').value.trim();
-
-//   const postContent = document.querySelector('textarea[name="post-text"]').value.trim();
-//   postContent,
-//   console.log(postTitle);
-//   // console.log(postContent);
-//   const id = document.querySelector('input[name="post-id"]').value;
-//   // const id = window.location.toString().split('/')[
-//     window.location.toString().split('/').length - 1
- 
-//     const response = await fetch(`/api/posts/${id}`, {
-//       method: 'PUT',
-//       body: JSON.stringify({
-//         postContent,
-//         postTitle,
-//         // postContent
-//       }),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-    
-//     if (response.ok) {
-//       document.location.replace('/dashboard/');
-//     } else {
-//       alert(response.statusText);
-//     }
-
-// }
 async function editFormHandler(event) {
   event.preventDefault();
 
@@ -37,9 +5,13 @@ async function editFormHandler(event) {
     .querySelector('input[name="post-title"]')
     .value.trim();
   const postContent = document
-    .querySelector('textarea[name="post-text"]')
+    .querySelector('input[name="comment-body"]')
     .value.trim();
-  const id = document.querySelector('input[name="post-id"]').value;
+    console.log(postTitle);
+    console.log(postContent);
+  const id = window.location.toString().split('/')[
+      window.location.toString().split('/').length - 1
+    ];
 
   const response = await fetch(`/api/posts/${id}`, {
     method: "PUT",
@@ -51,9 +23,9 @@ async function editFormHandler(event) {
       "Content-Type": "application/json",
     },
   });
-  document.location.replace("/dashboard/");
+  document.location.replace("/dashboard");
 }
 
 document
-.querySelector('#edit-post-form')
+.querySelector('.edit-post-form')
 .addEventListener('submit', editFormHandler);

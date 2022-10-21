@@ -68,11 +68,13 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-router.put("/:id", withAuth, (req, res) => {
-  Post.update(
+router.put("/:id", withAuth, async (req, res) => {
+  console.log(req.params.id)
+  console.table(req.body)
+  await Post.update(
     {
-      title: req.body.title,
-      content: req.body.content,
+      postTitle: req.body.postTitle,
+      postContent: req.body.postContent,
     },
     {
       where: {
@@ -81,6 +83,7 @@ router.put("/:id", withAuth, (req, res) => {
     }
   )
     .then((dbPostData) => {
+      console.log(dbPostData)
       if (!dbPostData) {
         res.status(404).json({ message: "No post found with this id" });
         return;

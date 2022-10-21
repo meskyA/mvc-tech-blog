@@ -34,7 +34,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         return;
       }
       const post = dbpostData.get({ plain: true });
-      res.render('editPost', { post, loggedIn: true });
+      res.render('edit-post', { post, loggedIn: true });
     })
  .catch (err => {
    console.log(err);
@@ -42,7 +42,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 });
 })
 router.get('/new', (req, res) => {
-  res.render('newpost');
+  res.render('new-post');
 });
 
 

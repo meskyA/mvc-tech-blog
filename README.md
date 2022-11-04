@@ -1,8 +1,14 @@
-#MVC tech-blog
+# MVC tech-blog
 
-Description
+## Description
 
 This project uses the  MVC (Model-View-Controller) framework to create a blog website where users can create an account, login using user name and password, logout, make posts, edit posts, and comments on other user's posts.
+
+## Table of contents
+
+- [Description](#description)
+- [Technologies used](#technologies)
+- 
 
 Tools used
 

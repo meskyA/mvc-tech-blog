@@ -29,6 +29,7 @@ This project uses the  MVC (Model-View-Controller) framework to create a blog we
 Heroku deployed application
 
 [heroku](https://my-mvc-tech-blog.herokuapp.com/)
+[GitHub](https://github.com/meskyA/mvc-tech-blog)
 
 [Screen-shot](Assets/Home-page.png)
 [Screen-shot](Assets/log-in.png)

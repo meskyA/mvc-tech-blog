@@ -30,8 +30,8 @@ Heroku deployed application
 
 [heroku](https://my-mvc-tech-blog.herokuapp.com/)
 
-[Screen-shot](Assets/home-page.png)
+[Screen-shot](Assets/Home-page.png)
 [Screen-shot](Assets/log-in.png)
 [Screen-shot](Assets/logged-in.png)
 [Screen-shot](Assets/posts-homepage.png)
-[Screen-shot]()
+[Screen-shot](Assets/Screen-Shot-dashboard.png)

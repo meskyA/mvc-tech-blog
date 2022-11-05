@@ -2,30 +2,36 @@
 
 ## Description
 
-This project uses the  MVC (Model-View-Controller) framework to create a blog website where users can create an account, login using user name and password, logout, make posts, edit posts, and comments on other user's posts.
+This project uses the  MVC (Model-View-Controller) framework to create a blog website where users can create an account, login by using user name and password. They can make posts with title, and content. Post date is displayed. Users can logout and save their passwords to log back again to , edit posts, and comments on other user's posts and delete posts.
 
 ## Table of contents
 
 - [Description](#description)
 - [Technologies used](#technologies)
-- 
+- [Links & Screen-shots](#links)
 
-Tools used
 
-CSS styles (to style page)
-JavaScript (to integration on the front-end)
-JavaScript ES6
-Node.js
-Express.js
-dotenv (dependency used to store env variables locally so sensitive data like root passwords are protected and not exposed on GitHub)
-MySQL
-Sequelize (dependency for integrating MySQL and Node.js)
-bcrypt (dependency for password hashing)
-handlebars (dependency for a template engine used for html and 
-Heroku (hosting platform)
-JawsDB (a Heroku add-on required for hosting the MySQL database)
+## Technologies used
 
-Links
+- CSS styles (to style page)
+- JavaScript (to integration on the front-end)
+- JavaScript ES6
+- Node.js
+- Express.js
+- MySQL
+- Sequelize (dependency for integrating MySQL and Node.js)
+- Bcrypt (dependency for password hashing)
+- Handlebars (dependency for a template engine used for html and 
+- Heroku (hosting platform)
+- JawsDB (a Heroku add-on required for hosting the MySQL database)
+
+## Links & Screen Shots
 Heroku deployed application
 
 [heroku](https://my-mvc-tech-blog.herokuapp.com/)
+
+[Screen-shot](Assets/home-page.png)
+[Screen-shot](Assets/log-in.png)
+[Screen-shot](Assets/logged-in.png)
+[Screen-shot](Assets/posts-homepage.png)
+[Screen-shot]()

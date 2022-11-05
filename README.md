@@ -26,13 +26,13 @@ This project uses the  MVC (Model-View-Controller) framework to create a blog we
 - JawsDB (a Heroku add-on required for hosting the MySQL database)
 
 ## Links & Screen Shots
-Heroku deployed application
 
-[heroku](https://my-mvc-tech-blog.herokuapp.com/)
-[GitHub](https://github.com/meskyA/mvc-tech-blog)
 
-[Screen-shot](Assets/Home-page.png)
-[Screen-shot](Assets/log-in.png)
-[Screen-shot](Assets/logged-in.png)
-[Screen-shot](Assets/posts-homepage.png)
-[Screen-shot](Assets/Screen-Shot-dashboard.png)
+- [heroku](https://my-mvc-tech-blog.herokuapp.com/)
+- [GitHub](https://github.com/meskyA/mvc-tech-blog)
+
+- [Screen-shot](Assets/Home-page.png)
+- [Screen-shot](Assets/log-in.png)
+- [Screen-shot](Assets/logged-in.png)
+- [Screen-shot](Assets/posts-homepage.png)
+- [Screen-shot](Assets/Screen-Shot-dashboard.png)
